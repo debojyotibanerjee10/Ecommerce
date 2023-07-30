@@ -7,8 +7,36 @@ router.post("/api/products",(req,res)=>{
         res.send("Product details cannot be saved to the databse");
     })
 })
-router.get("/api/products",(req,res)=>{
-    product.find().then((all)=>{res.send(all)}).catch(()=>{res.send("some error occured")})
+router.get("/api/products",async(req,res)=>{
+    console.log(req.query)
+    try{
+    const queryobject={}
+    const {name,category,price,rating}=req.query
+    if(name)
+    queryobject.name={$regex:name,$options:"i"}
+    if(category)
+    queryobject.category={$regex:category,$options:"i"}
+    if(price){
+    const minprice=Number(price.gte) || 0
+    const maxprice=Number(price.lte) || 1000000
+    queryobject.price={
+        $gte:minprice,
+        $lte:maxprice
+    }
+}
+    if(rating){
+    const minrating=Number(rating.gte) || 0
+    const maxrating=Number(rating.lte) || 5
+    queryobject.rating={
+        $gte:minrating,
+        $lte:maxrating
+    }
+}
+    let limit=req.query.limit || 10
+    let page=req.query.page || 1
+    let skip=(page-1)*limit
+    const item= await product.find(queryobject).limit(limit).skip(skip);
+    res.send(item)}catch(err){res.send("Some error occured")}
 })
 router.put("/api/products/:id",(req,res)=>{
     product.findById(req.params.id).then((ans)=>{
