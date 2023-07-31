@@ -2,17 +2,17 @@ const mongoose=require("mongoose");
 const blueprint=new mongoose.Schema({
     name:{
         type:String,
-        required:true,
+        required:[true,"Please Enter Product Name"],
         trim:true
     },
     description:{
         type:String,
-        required:true,
+        required:[true,"Please Enter Product description"],
         trim:true
     },
     price:{
         type:Number,
-        required:true
+        required:[true,"Please Enter Product price"]
     },
     rating:{
         type:Number,
@@ -32,11 +32,11 @@ const blueprint=new mongoose.Schema({
     ],
     category:{
         type:String,
-        required:true,
+        required:[true,"Please Enter Product category"]
     },
     stock:{
         type:Number,
-        required:true,
+        required:[true,"Please Enter Product stock"],
         default:0
     },
     numofreview:{
