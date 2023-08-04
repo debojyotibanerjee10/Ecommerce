@@ -39,3 +39,14 @@ exports.logout=(req,res,next)=>{
         message:"Logout successfuly"
     })
 }
+exports.forgotpassword=async(req,res,next)=>{
+    try{
+    const user=await User.find({email:req.body.email});
+    if(!user)
+    return next(new Errorhandler("Invalid Email",404))
+    const passwordtoken=user.getresetpassword();
+    await user.save();
+    }catch(err){
+        res.send(err.message);
+    }
+}

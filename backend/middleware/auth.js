@@ -13,4 +13,11 @@ exports.isauthenticated=async(req,res,next)=>{
 }catch(err){
     return next(new Errorhandler("Some error occured",400))
 }
+}
+exports.authorizeroles=(roles)=>{
+    return (req,res,next)=>{
+        if(roles!=req.user.role)
+        return next(new Errorhandler("Not an Admin user"),403);
+        next();
+    }
 } 
