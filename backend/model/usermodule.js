@@ -54,11 +54,5 @@ userschema.methods.getjwttoken=function(){
 userschema.methods.comparepassword= async function(enteredpassword){
     return await brcyptjs.compare(enteredpassword,this.password);
 }
-userschema.methods.getresetpassword=async function(){
-    const resettoken=crypto.randomBytes(20).toString("hex");
-    this.resetpasswordtoken=crypto.createHash("sha256").update(resettoken).digest("hex");
-    this.resetpasswordexpire=new Date(Date.now+15*60*1000);
-    return resettoken;
-}
 const user=new mongoose.model("Userinfo",userschema);
 module.exports=user
