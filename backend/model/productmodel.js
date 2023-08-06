@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+const user=require("./usermodule");
 const blueprint=new mongoose.Schema({
     name:{
         type:String,
@@ -44,6 +45,11 @@ const blueprint=new mongoose.Schema({
         default:0
     },
     review:[{
+        user:{
+            type:mongoose.Schema.ObjectId,
+            ref:"user",
+            require:true
+        },
         name:{
             type:String,
             required:true
