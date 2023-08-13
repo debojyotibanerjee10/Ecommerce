@@ -1,0 +1,91 @@
+.footer{
+  display: flex;
+  background-color: black;
+  justify-content: space-around;
+  color: white;
+  align-items: center;
+}
+.footer .leftfooter{
+  padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33vw;
+}
+.footer .midfooter{
+  padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 34vw;
+}
+.footer .rightfooter{
+  padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33vw;
+}
+.footer .rightfooter a{
+  color: white;
+  text-decoration: none;
+}
+.footer .rightfooter a:hover{
+  color: red;
+}
+.footer .leftfooter img{
+  height: 3.5rem;
+}
+.footer h4,p,img,a{
+  margin: 0.3em;
+}
+.footer .midfooter h4{
+  font-size: 2rem;
+}
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+}
+.home h2{
+  margin-top: 2em;
+}
+.home h1{
+  margin-top: 1.5em;
+}
+.home .somehomecontent{
+  width: 100vw;
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.home .somehomecontent h3{
+  text-align: center;
+}
+.product{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  transition: 1sec;
+}
+.product img{
+  height: 9rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px;
+}
+
+@media(max-width:748px){
+  body{
+  font-size: 62.5%;
+  }
+}
+@media(max-width:480px){
+  .footer .leftfooter img{
+    height: 2.3rem;
+  }
+}
